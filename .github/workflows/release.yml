@@ -14,15 +14,32 @@ jobs:
       # Build
       - name: Build the file
         run: |
-          rm -rf /home/runner/work/bom-radar-card/bom-radar-card/node_modules
-          cd /home/runner/work/bom-radar-card/bom-radar-card
+          if ($Env:RUNNER_OS -eq "Windows_NT") {
+            Remove-Item -Recurse -Force C:\actions-runner\_work\bom-radar-card\bom-radar-card\node_modules
+            cd C:\actions-runner\_work\bom-radar-card\bom-radar-card
+          } else {
+            rm -rf /home/runner/work/bom-radar-card/bom-radar-card/node_modules
+            cd /home/runner/work/bom-radar-card/bom-radar-card
+          }
           npm install
           npm run build
+        shell: pwsh
 
-      # Upload build file to the release as an asset.
-      - name: Upload zip to release
+      # Upload build file on Windows
+      - name: Upload zip to release (Windows)
+        if: runner.os == 'Windows'
         uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: C:/actions-runner/_work/bom-radar-card/bom-radar-card/dist/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
 
+      # Upload build file on Linux
+      - name: Upload zip to release (Linux)
+        if: runner.os == 'Linux'
+        uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/bom-radar-card/bom-radar-card/dist/*
