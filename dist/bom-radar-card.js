@@ -13449,8 +13449,7 @@ let BomRadarCard = class BomRadarCard extends s$1 {
                       text-overflow: ellipsis;
                     }
                     #timestampid {
-                      width: auto;
-                      max-width: 100%;
+                      width: fit-content
                     }
                     #color-bar {
                       margin: 0px 0px;
@@ -13476,7 +13475,7 @@ let BomRadarCard = class BomRadarCard extends s$1 {
                       <div id="progress-bar" style="height:8px;width:0; background-color: #ccf2ff;"></div>
                     </div>
                     <div id="bottom-container" class="light-links" style="height: 32px; background-color: white;">
-                      <div id="timestampid" class="text-container" style="height: 32px; float:left; position: absolute;">
+                      <div id="timestampid" class="text-container" style="width: 120px; height: 32px; float:left; position: absolute;">
                         <p id="timestamp"></p>
                       </div>
                       <div id="attribution" class="text-container-small" style="height: 32px; float:right;">
