@@ -12,7 +12,7 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-/* global Reflect, Promise, SuppressedError, Symbol */
+/* global Reflect, Promise, SuppressedError, Symbol, Iterator */
 
 var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf ||
@@ -12868,7 +12868,7 @@ BomRadarCardEditor = __decorate([
     e$7('bom-radar-card-editor')
 ], BomRadarCardEditor);
 
-const CARD_VERSION = '3.0.0';
+const CARD_VERSION = '3.0.2';
 
 var common$1 = {
 	version: "Version",
@@ -13141,6 +13141,14 @@ let BomRadarCard = class BomRadarCard extends s$1 {
         const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         const x = new Date(date);
+        let hours = x.getHours();
+        const minutes = x
+            .getMinutes()
+            .toString()
+            .padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
         return (weekday[x.getDay()] +
             ' ' +
             month[x.getMonth()] +
@@ -13150,15 +13158,11 @@ let BomRadarCard = class BomRadarCard extends s$1 {
                 .toString()
                 .padStart(2, '0') +
             ' ' +
-            x
-                .getHours()
-                .toString()
-                .padStart(2, '0') +
+            hours +
             ':' +
-            x
-                .getMinutes()
-                .toString()
-                .padStart(2, '0'));
+            minutes +
+            ' ' +
+            ampm);
     }
     loadMapContent() {
         var _a, _b, _c;
@@ -13960,6 +13964,17 @@ let BomRadarCard = class BomRadarCard extends s$1 {
     
               function getRadarTimeString(date) {
                 x = new Date(date);
+    
+                let hours = x.getHours();
+                const minutes = x
+                  .getMinutes()
+                  .toString()
+                  .padStart(2, '0');
+    
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12; // the hour '0' should be '12'
+    
                 return (
                   weekday[x.getDay()] +
                   ' ' +
@@ -13970,15 +13985,11 @@ let BomRadarCard = class BomRadarCard extends s$1 {
                     .toString()
                     .padStart(2, '0') +
                   ' ' +
-                  x
-                    .getHours()
-                    .toString()
-                    .padStart(2, '0') +
+                  hours +
                   ':' +
-                  x
-                    .getMinutes()
-                    .toString()
-                    .padStart(2, '0')
+                  minutes +
+                  ' ' +
+                  ampm
                 );
               }
     
