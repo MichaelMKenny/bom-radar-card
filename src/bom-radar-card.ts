@@ -556,7 +556,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
                   text-overflow: ellipsis;
                 }
                 #timestampid {
-                  width: fit-content;
+                  width: fit-content !important;
                 }
                 #color-bar {
                   margin: 0px 0px;
