@@ -213,6 +213,17 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
     const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const x = new Date(date);
+    
+    let hours = x.getHours();
+    const minutes = x
+      .getMinutes()
+      .toString()
+      .padStart(2, '0');
+    
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+  
     return (
       weekday[x.getDay()] +
       ' ' +
@@ -223,15 +234,11 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
         .toString()
         .padStart(2, '0') +
       ' ' +
-      x
-        .getHours()
-        .toString()
-        .padStart(2, '0') +
+      hours +
       ':' +
-      x
-        .getMinutes()
-        .toString()
-        .padStart(2, '0')
+      minutes +
+      ' ' +
+      ampm
     );
   }
 
