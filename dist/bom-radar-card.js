@@ -14140,7 +14140,7 @@ let BomRadarCard = class BomRadarCard extends s$1 {
       .text-container {
         font: 14px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
         color: var(--bottom-container-color);
-        width: 120px;
+        width: 150px;
         float:left;
         padding-left: 10px;
         position: absolute;

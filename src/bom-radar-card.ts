@@ -1254,7 +1254,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
       .text-container {
         font: 14px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
         color: var(--bottom-container-color);
-        width: 120px;
+        width: 150px;
         float:left;
         padding-left: 10px;
         position: absolute;
