@@ -13449,7 +13449,7 @@ let BomRadarCard = class BomRadarCard extends s$1 {
                       text-overflow: ellipsis;
                     }
                     #timestampid {
-                      width: fit-content
+                      width: fit-content;
                     }
                     #color-bar {
                       margin: 0px 0px;
