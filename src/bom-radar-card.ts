@@ -551,6 +551,13 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
                   font: 14px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
                   margin: 0px 0px;
                   padding-top: 5px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+                #timestampid {
+                  width: auto;
+                  max-width: 100%;
                 }
                 #color-bar {
                   margin: 0px 0px;
