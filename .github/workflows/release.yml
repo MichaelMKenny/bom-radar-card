@@ -23,7 +23,7 @@ jobs:
           }
           npm install
           npm run build
-        shell: pwsh
+        shell: powershell
 
       # Upload build file on Windows
       - name: Upload zip to release (Windows)
